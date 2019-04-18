@@ -324,248 +324,7 @@ function allocUnsafe(t) {
 }
 
 
-function c(t, e) {
-    if (undefined,
-        t = o_1(t, e < 0 ? 0 : 0 | e),
-        false)
-        for (var r = 0; r < e; ++r)
-            t[r] = 0;
-    return t
-}
 
-
-// function s() {
-//    
-// }
-
-function hash(e) {
-    return "string" == typeof e && (e = encrypt_str(e)),(0, o_default)(e, 41405).toString(16).replace(/^0+/, "")
-
-}
-
-// 待补充
-function o_default() {
-    return 2 == arguments.length ? new o_default(arguments[1]).update(arguments[0]).digest() : this instanceof o_default ? void o_default_i.call(this, arguments[0]) : new o_default(arguments[0])
-}
-
-function n_n(t) {
-    for (var e = [], r = 0, n = t.length; r < n; r++) {
-        var o = t.charCodeAt(r);
-        o < 128 ? e.push(o) : o < 2048 ? e.push(192 | o >> 6, 128 | 63 & o) : o < 55296 || o >= 57344 ? e.push(224 | o >> 12, 128 | o >> 6 & 63, 128 | 63 & o) : (r++,
-            o = 65536 + ((1023 & o) << 10 | 1023 & t.charCodeAt(r)),
-            e.push(240 | o >> 18, 128 | o >> 12 & 63, 128 | o >> 6 & 63, 128 | 63 & o))
-    }
-    return new Uint8Array(e)
-}
-
-function update_i(t, e, r) {
-    if ("number" == typeof t) {
-        return c(this, t)
-    }
-    return a(this, t, e, r)
-}
-function update(kk, t) {
-
-    var r, o = "string" == typeof t;
-    o && (t = n_n(t),
-        o = !1,
-        r = !0),
-    "undefined" != typeof ArrayBuffer && t instanceof ArrayBuffer && (r = !0,
-        t = new Uint8Array(t));
-    var i = 0
-        , c = t.length
-        , f = i + c;
-    if (0 == c)
-        return kk;
-    if (kk.total_len += c,
-    0 == kk.memsize && (kk.memory = o ? "" : r ? new Uint8Array(32) : new update_i(32)),
-    kk.memsize + c < 32)
-        return o ? kk.memory += t : r ? kk.memory.set(t.subarray(0, c), kk.memsize) : copy(t, kk.memory, kk.memsize, 0, c),
-            kk.memsize += c,
-            kk;
-    if (kk.memsize > 0) {
-        o ? kk.memory += t.slice(0, 32 - kk.memsize) : r ? kk.memory.set(t.subarray(0, 32 - kk.memsize), kk.memsize) : copy(t, kk.memory, kk.memsize, 0, 32 - kk.memsize);
-        var l = 0;
-        if (o) {
-            var h;
-            h = a(kk.memory.charCodeAt(l + 1) << 8 | kk.memory.charCodeAt(l), kk.memory.charCodeAt(l + 3) << 8 | kk.memory.charCodeAt(l + 2), kk.memory.charCodeAt(l + 5) << 8 | kk.memory.charCodeAt(l + 4), kk.memory.charCodeAt(l + 7) << 8 | kk.memory.charCodeAt(l + 6)),
-                kk.v1.add(h.multiply(u)).rotl(31).multiply(s),
-                l += 8,
-                h = a(kk.memory.charCodeAt(l + 1) << 8 | kk.memory.charCodeAt(l), kk.memory.charCodeAt(l + 3) << 8 | kk.memory.charCodeAt(l + 2), kk.memory.charCodeAt(l + 5) << 8 | kk.memory.charCodeAt(l + 4), kk.memory.charCodeAt(l + 7) << 8 | kk.memory.charCodeAt(l + 6)),
-                kk.v2.add(h.multiply(u)).rotl(31).multiply(s),
-                l += 8,
-                h = a(kk.memory.charCodeAt(l + 1) << 8 | kk.memory.charCodeAt(l), kk.memory.charCodeAt(l + 3) << 8 | kk.memory.charCodeAt(l + 2), kk.memory.charCodeAt(l + 5) << 8 | kk.memory.charCodeAt(l + 4), kk.memory.charCodeAt(l + 7) << 8 | kk.memory.charCodeAt(l + 6)),
-                kk.v3.add(h.multiply(u)).rotl(31).multiply(s),
-                l += 8,
-                h = a(kk.memory.charCodeAt(l + 1) << 8 | kk.memory.charCodeAt(l), kk.memory.charCodeAt(l + 3) << 8 | kk.memory.charCodeAt(l + 2), kk.memory.charCodeAt(l + 5) << 8 | kk.memory.charCodeAt(l + 4), kk.memory.charCodeAt(l + 7) << 8 | kk.memory.charCodeAt(l + 6)),
-                kk.v4.add(h.multiply(u)).rotl(31).multiply(s)
-        } else {
-            var h;
-            h = a(kk.memory[l + 1] << 8 | kk.memory[l], kk.memory[l + 3] << 8 | kk.memory[l + 2], kk.memory[l + 5] << 8 | kk.memory[l + 4], kk.memory[l + 7] << 8 | kk.memory[l + 6]),
-                kk.v1.add(h.multiply(u)).rotl(31).multiply(s),
-                l += 8,
-                h = a(kk.memory[l + 1] << 8 | kk.memory[l], kk.memory[l + 3] << 8 | kk.memory[l + 2], kk.memory[l + 5] << 8 | kk.memory[l + 4], kk.memory[l + 7] << 8 | kk.memory[l + 6]),
-                kk.v2.add(h.multiply(u)).rotl(31).multiply(s),
-                l += 8,
-                h = a(kk.memory[l + 1] << 8 | kk.memory[l], kk.memory[l + 3] << 8 | kk.memory[l + 2], kk.memory[l + 5] << 8 | kk.memory[l + 4], kk.memory[l + 7] << 8 | kk.memory[l + 6]),
-                kk.v3.add(h.multiply(u)).rotl(31).multiply(s),
-                l += 8,
-                h = a(kk.memory[l + 1] << 8 | kk.memory[l], kk.memory[l + 3] << 8 | kk.memory[l + 2], kk.memory[l + 5] << 8 | kk.memory[l + 4], kk.memory[l + 7] << 8 | kk.memory[l + 6]),
-                kk.v4.add(h.multiply(u)).rotl(31).multiply(s)
-        }
-        i += 32 - kk.memsize,
-            kk.memsize = 0,
-        o && (kk.memory = "")
-    }
-    if (i <= f - 32) {
-        var p = f - 32;
-        do {
-            if (o) {
-                var h;
-                h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
-                    kk.v1.add(h.multiply(u)).rotl(31).multiply(s),
-                    i += 8,
-                    h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
-                    kk.v2.add(h.multiply(u)).rotl(31).multiply(s),
-                    i += 8,
-                    h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
-                    kk.v3.add(h.multiply(u)).rotl(31).multiply(s),
-                    i += 8,
-                    h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
-                    kk.v4.add(h.multiply(u)).rotl(31).multiply(s)
-            } else {
-                var h;
-                h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
-                    kk.v1.add(h.multiply(u)).rotl(31).multiply(s),
-                    i += 8,
-                    h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
-                    kk.v2.add(h.multiply(u)).rotl(31).multiply(s),
-                    i += 8,
-                    h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
-                    kk.v3.add(h.multiply(u)).rotl(31).multiply(s),
-                    i += 8,
-                    h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
-                    kk.v4.add(h.multiply(u)).rotl(31).multiply(s)
-            }
-            i += 8
-        } while (i <= p)
-    }
-    return i < f && (o ? kk.memory += t.slice(i) : r ? kk.memory.set(t.subarray(i, f), kk.memsize) : copy(t, kk.memory, kk.memsize, i, f),
-        kk.memsize = f - i),
-        kk
-}
-
-
-function digest(kk) {
-    var t, e, r = kk.memory, n = "string" == typeof r, o = 0, i = kk.memsize, h = new o_default_a_i;
-    for (kk.total_len >= 32 ? (t = kk.v1.clone().rotl(1),
-        t.add(kk.v2.clone().rotl(7)),
-        t.add(kk.v3.clone().rotl(12)),
-        t.add(kk.v4.clone().rotl(18)),
-        t.xor(kk.v1.multiply(u).rotl(31).multiply(s)),
-        t.multiply(s).add(f),
-        t.xor(kk.v2.multiply(u).rotl(31).multiply(s)),
-        t.multiply(s).add(f),
-        t.xor(kk.v3.multiply(u).rotl(31).multiply(s)),
-        t.multiply(s).add(f),
-        t.xor(kk.v4.multiply(u).rotl(31).multiply(s)),
-        t.multiply(s).add(f)) : t = kk.seed.clone().add(l),
-             t.add(h.fromNumber(kk.total_len)); o <= i - 8; )
-        n ? h.fromBits(r.charCodeAt(o + 1) << 8 | r.charCodeAt(o), r.charCodeAt(o + 3) << 8 | r.charCodeAt(o + 2), r.charCodeAt(o + 5) << 8 | r.charCodeAt(o + 4), r.charCodeAt(o + 7) << 8 | r.charCodeAt(o + 6)) : h.fromBits(r[o + 1] << 8 | r[o], r[o + 3] << 8 | r[o + 2], r[o + 5] << 8 | r[o + 4], r[o + 7] << 8 | r[o + 6]),
-            h.multiply(u).rotl(31).multiply(s),
-            t.xor(h).rotl(27).multiply(s).add(f),
-            o += 8;
-    for (o + 4 <= i && (n ? h.fromBits(r.charCodeAt(o + 1) << 8 | r.charCodeAt(o), r.charCodeAt(o + 3) << 8 | r.charCodeAt(o + 2), 0, 0) : h.fromBits(r[o + 1] << 8 | r[o], r[o + 3] << 8 | r[o + 2], 0, 0),
-        t.xor(h.multiply(s)).rotl(23).multiply(u).add(c),
-        o += 4); o < i; )
-        h.fromBits(n ? r.charCodeAt(o++) : r[o++], 0, 0, 0),
-            t.xor(h.multiply(l)).rotl(11).multiply(s);
-    return e = t.clone().shiftRight(33),
-        t.xor(e).multiply(u),
-        e = t.clone().shiftRight(29),
-        t.xor(e).multiply(c),
-        e = t.clone().shiftRight(32),
-        t.xor(e),
-        kk.init(kk.seed),
-        t
-}
-
-function o_default_a_i(t, e, r, n) {
-    return this instanceof o_default_a_i ? (this.remainder = null,
-        "string" == typeof t ? u_u.call(this, t, e) : void 0 === e ? s_s.call(this, t) : void a_a.apply(this, arguments)) : new o_default_a_i(t,e,r,n)
-}
-//t instanceof a ? t.clone() : a(t)
-function o_default_a(t, e, r, n) {
-    return this._a00 = 65535 & t,
-        this._a16 = t >>> 16,
-        this._a32 = 0,
-        this._a48 = 0,
-        this.clone = function () {
-            return new o_default_a_i(this._a00, this._a16, this._a32, this._a48)
-        },
-        this.add = function(t) {
-            var e = this._a00 + t._a00
-                , r = e >>> 16;
-            r += this._a16 + t._a16;
-            var n = r >>> 16;
-            n += this._a32 + t._a32;
-            var o = n >>> 16;
-            return o += this._a48 + t._a48,
-                this._a00 = 65535 & e,
-                this._a16 = 65535 & r,
-                this._a32 = 65535 & n,
-                this._a48 = 65535 & o,
-                this
-        },
-
-        this.subtract = function (t) {
-            return this.add(t.clone().negate())
-        },
-
-        this.negate = function() {
-            var t = 1 + (65535 & ~this._a00);
-            return this._a00 = 65535 & t,
-                t = (65535 & ~this._a16) + (t >>> 16),
-                this._a16 = 65535 & t,
-                t = (65535 & ~this._a32) + (t >>> 16),
-                this._a32 = 65535 & t,
-                this._a48 = ~this._a48 + (t >>> 16) & 65535,
-                this
-        },
-        this.xor = function (t) {
-            return this._a00 ^= t._a00,
-                this._a16 ^= t._a16,
-                this._a32 ^= t._a32,
-                this._a48 ^= t._a48,
-                this
-
-        },
-
-        this
-}
-
-
-
-
-
-
-
-
-
-
-function o_default_i(t) {
-    var s = {'remainder': null, '_a00': 51847, '_a16': 34283, '_a32': 31153, '_a48': 40503, 'clone': function() { return new o_default_a_i(this._a00,this._a16,this._a32,this._a48)}}
-    var u = {'remainder': null, '_a00': 60239, '_a16': 10196, '_a32': 44605, '_a48': 49842};
-    return this.seed = o_default_a(t),
-        this.v1 = this.seed.clone().add(s).add(u),
-        this.v2 = this.seed.clone().add(u),
-        this.v3 = this.seed.clone(),
-        this.v4 = this.seed.clone().subtract(s),
-        this.total_len = 0,
-        this.memsize = 0,
-        this.memory = null,
-        this
-}
 function main(r){
     var a = encrypt_str(r, "base64")
         , s = Math.max(Math.floor((a.length - 2 * i) / 3), 0)
@@ -602,11 +361,145 @@ function h_default(){
 
 
     // 测试：
-    return 2 == arguments.length ? new h_default(arguments[1]): this instanceof h_default ? void i_i.call(this, arguments[0]) : new h_default(arguments[0])
+    return 2 == arguments.length ? update(new h_default(arguments[1]), arguments[0]): this instanceof h_default ? void i_i.call(this, arguments[0]) : new h_default(arguments[0])
 
 }
 
+function n_n(t) {
 
+    // update 中调用， 返回一个Uint8Array 对象
+    for (var e = [], r = 0, n = t.length; r < n; r++) {
+        var o = t.charCodeAt(r);
+        o < 128 ? e.push(o) : o < 2048 ? e.push(192 | o >> 6, 128 | 63 & o) : o < 55296 || o >= 57344 ? e.push(224 | o >> 12, 128 | o >> 6 & 63, 128 | 63 & o) : (r++,
+            o = 65536 + ((1023 & o) << 10 | 1023 & t.charCodeAt(r)),
+            e.push(240 | o >> 18, 128 | o >> 12 & 63, 128 | o >> 6 & 63, 128 | 63 & o))
+    }
+    return new Uint8Array(e)
+}
+
+
+
+
+function e_update(t, e, r) {
+    if (!(true || this instanceof i))
+        return new e_update(t,e,r);
+    if ("number" == typeof t) {
+        if ("string" == typeof e)
+            throw new Error("If encoding is specified then the first argument must be a string");
+        return c_e_update(this, t)
+    }
+    return a(this, t, e, r)
+}
+
+function c_e_update(t, e) {
+    
+    function o(t, e) {
+        return (t = new Uint8Array(e),
+            t.__proto__ = e_update.prototype),
+            t
+    }
+    if (undefined,
+        t = o(t, e < 0 ? 0 : 0 | e),
+        false)
+        for (var r = 0; r < e; ++r)
+            t[r] = 0;
+    return t
+}
+
+
+function update(kkk, t) {
+    let tool = new Tool();
+    var r, o = "string" == typeof t;
+    o && (t = n_n(t),
+        o = !1,
+        r = !0),
+    "undefined" != typeof ArrayBuffer && t instanceof ArrayBuffer && (r = !0,
+        t = new Uint8Array(t));
+    var i = 0
+        , c = t.length
+        , f = i + c;
+    if (0 == c)
+        return kkk;
+    if (kkk.total_len += c,
+    
+    //  e_update
+    0 == kkk.memsize && (kkk.memory = o ? "" : r ? new Uint8Array(32) : new e_update(32)),
+    kkk.memsize + c < 32)
+        return o ? kkk.memory += t : r ? kkk.memory.set(t.subarray(0, c), kkk.memsize) : copy(t, kkk.memory, kkk.memsize, 0, c),
+            kkk.memsize += c,
+            kkk;
+    if (kkk.memsize > 0) {
+        o ? kkk.memory += t.slice(0, 32 - kkk.memsize) : r ? kkk.memory.set(t.subarray(0, 32 - kkk.memsize), kkk.memsize) : t.copy(kkk.memory, kkk.memsize, 0, 32 - kkk.memsize);
+        var l = 0;
+        if (o) {
+            var h;
+            h = a(kkk.memory.charCodeAt(l + 1) << 8 | kkk.memory.charCodeAt(l), kkk.memory.charCodeAt(l + 3) << 8 | kkk.memory.charCodeAt(l + 2), kkk.memory.charCodeAt(l + 5) << 8 | kkk.memory.charCodeAt(l + 4), kkk.memory.charCodeAt(l + 7) << 8 | kkk.memory.charCodeAt(l + 6)),
+                kkk.v1.add(h.multiply(u)).rotl(31).multiply(s),
+                l += 8,
+                h = a(kkk.memory.charCodeAt(l + 1) << 8 | kkk.memory.charCodeAt(l), kkk.memory.charCodeAt(l + 3) << 8 | kkk.memory.charCodeAt(l + 2), kkk.memory.charCodeAt(l + 5) << 8 | kkk.memory.charCodeAt(l + 4), kkk.memory.charCodeAt(l + 7) << 8 | kkk.memory.charCodeAt(l + 6)),
+                kkk.v2.add(h.multiply(u)).rotl(31).multiply(s),
+                l += 8,
+                h = a(kkk.memory.charCodeAt(l + 1) << 8 | kkk.memory.charCodeAt(l), kkk.memory.charCodeAt(l + 3) << 8 | kkk.memory.charCodeAt(l + 2), kkk.memory.charCodeAt(l + 5) << 8 | kkk.memory.charCodeAt(l + 4), kkk.memory.charCodeAt(l + 7) << 8 | kkk.memory.charCodeAt(l + 6)),
+                kkk.v3.add(h.multiply(u)).rotl(31).multiply(s),
+                l += 8,
+                h = a(kkk.memory.charCodeAt(l + 1) << 8 | kkk.memory.charCodeAt(l), kkk.memory.charCodeAt(l + 3) << 8 | kkk.memory.charCodeAt(l + 2), kkk.memory.charCodeAt(l + 5) << 8 | kkk.memory.charCodeAt(l + 4), kkk.memory.charCodeAt(l + 7) << 8 | kkk.memory.charCodeAt(l + 6)),
+                kkk.v4.add(h.multiply(u)).rotl(31).multiply(s)
+        } else {
+            var h;
+            h = a(kkk.memory[l + 1] << 8 | kkk.memory[l], kkk.memory[l + 3] << 8 | kkk.memory[l + 2], kkk.memory[l + 5] << 8 | kkk.memory[l + 4], kkk.memory[l + 7] << 8 | kkk.memory[l + 6]),
+                kkk.v1.add(h.multiply(u)).rotl(31).multiply(s),
+                l += 8,
+                h = a(kkk.memory[l + 1] << 8 | kkk.memory[l], kkk.memory[l + 3] << 8 | kkk.memory[l + 2], kkk.memory[l + 5] << 8 | kkk.memory[l + 4], kkk.memory[l + 7] << 8 | kkk.memory[l + 6]),
+                kkk.v2.add(h.multiply(u)).rotl(31).multiply(s),
+                l += 8,
+                h = a(kkk.memory[l + 1] << 8 | kkk.memory[l], kkk.memory[l + 3] << 8 | kkk.memory[l + 2], kkk.memory[l + 5] << 8 | kkk.memory[l + 4], kkk.memory[l + 7] << 8 | kkk.memory[l + 6]),
+                kkk.v3.add(h.multiply(u)).rotl(31).multiply(s),
+                l += 8,
+                h = a(kkk.memory[l + 1] << 8 | kkk.memory[l], kkk.memory[l + 3] << 8 | kkk.memory[l + 2], kkk.memory[l + 5] << 8 | kkk.memory[l + 4], kkk.memory[l + 7] << 8 | kkk.memory[l + 6]),
+                kkk.v4.add(h.multiply(u)).rotl(31).multiply(s)
+        }
+        i += 32 - kkk.memsize,
+            kkk.memsize = 0,
+        o && (kkk.memory = "")
+    }
+    if (i <= f - 32) {
+        var p = f - 32;
+        do {
+            if (o) {
+                var h;
+                h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
+                    kkk.v1.add(h.multiply(u)).rotl(31).multiply(s),
+                    i += 8,
+                    h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
+                    kkk.v2.add(h.multiply(u)).rotl(31).multiply(s),
+                    i += 8,
+                    h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
+                    kkk.v3.add(h.multiply(u)).rotl(31).multiply(s),
+                    i += 8,
+                    h = a(t.charCodeAt(i + 1) << 8 | t.charCodeAt(i), t.charCodeAt(i + 3) << 8 | t.charCodeAt(i + 2), t.charCodeAt(i + 5) << 8 | t.charCodeAt(i + 4), t.charCodeAt(i + 7) << 8 | t.charCodeAt(i + 6)),
+                    kkk.v4.add(h.multiply(u)).rotl(31).multiply(s)
+            } else {
+                var h;
+                h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
+                    kkk.v1.add(h.multiply(u)).rotl(31).multiply(s),
+                    i += 8,
+                    h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
+                    kkk.v2.add(h.multiply(u)).rotl(31).multiply(s),
+                    i += 8,
+                    h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
+                    kkk.v3.add(h.multiply(u)).rotl(31).multiply(s),
+                    i += 8,
+                    h = a(t[i + 1] << 8 | t[i], t[i + 3] << 8 | t[i + 2], t[i + 5] << 8 | t[i + 4], t[i + 7] << 8 | t[i + 6]),
+                    kkk.v4.add(h.multiply(u)).rotl(31).multiply(s)
+            }
+            i += 8
+        } while (i <= p)
+    }
+    return i < f && (o ? kkk.memory += t.slice(i) : r ? kkk.memory.set(t.subarray(i, f), kkk.memsize) : t.copy(kkk.memory, kkk.memsize, i, f),
+        kkk.memsize = f - i),
+        kkk
+
+}
 function i_i(t){
 
     // s, u 为固定值
