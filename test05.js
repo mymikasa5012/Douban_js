@@ -372,7 +372,7 @@ function res(t) {
 
 function decrypt_t(t) {
 
-    //æµ‹è¯•
+    //²âÊÔ
     //console.log(t.length);
     let ttt = It(t);
 
@@ -1038,25 +1038,25 @@ function decrypt(e) {
 function c_e(e){
     return "string" == typeof e && (e = encrypt_str(e)),
         (0, h_default)(e, 41405).toString(16).replace(/^0+/, "")
-    // å¾…å®š
+    // ´ı¶¨
     //    h_default(e, 41405)
 }
 
 function h_default(){
-    // æ ¹æ®å‚æ•°çš„ä¸ªæ•°ï¼Œ æ‰§è¡Œå…·ä½“çš„æ­¥éª¤
-    // å‚æ•°æœ‰ä¸¤ä¸ª   new h_default(arguments[1]).update(arguments[0]).digest()
-    // å‚æ•°ä¸€ä¸ªï¼Œé¦–å…ˆåˆ¤æ–­æ˜¯ä¸æ˜¯h_defaultçš„å®ä¾‹     this instanceof h_default ? void i_i.call(this, arguments[0]) : new h_default(arguments[0])
+    // ¸ù¾İ²ÎÊıµÄ¸öÊı£¬ Ö´ĞĞ¾ßÌåµÄ²½Öè
+    // ²ÎÊıÓĞÁ½¸ö   new h_default(arguments[1]).update(arguments[0]).digest()
+    // ²ÎÊıÒ»¸ö£¬Ê×ÏÈÅĞ¶ÏÊÇ²»ÊÇh_defaultµÄÊµÀı     this instanceof h_default ? void i_i.call(this, arguments[0]) : new h_default(arguments[0])
     // return 2 == arguments.length ? new h_default(arguments[1]).update(arguments[0]).digest() : this instanceof h_default ? void i_i.call(this, arguments[0]) : new h_default(arguments[0])
 
 
-    // æµ‹è¯•ï¼š
+    // ²âÊÔ£º
     return 2 == arguments.length ? digest(update(new h_default(arguments[1]), arguments[0])) : this instanceof h_default ? void i_i.call(this, arguments[0]) : new h_default(arguments[0])
 
 }
 
 function n_n(t) {
 
-    // update ä¸­è°ƒç”¨ï¼Œ è¿”å›ä¸€ä¸ªUint8Array å¯¹è±¡
+    // update ÖĞµ÷ÓÃ£¬ ·µ»ØÒ»¸öUint8Array ¶ÔÏó
     for (var e = [], r = 0, n = t.length; r < n; r++) {
         var o = t.charCodeAt(r);
         o < 128 ? e.push(o) : o < 2048 ? e.push(192 | o >> 6, 128 | 63 & o) : o < 55296 || o >= 57344 ? e.push(224 | o >> 12, 128 | o >> 6 & 63, 128 | 63 & o) : (r++,
@@ -1298,7 +1298,7 @@ function update(kkk, t) {
 }
 function i_i(t){
 
-    // s, u ä¸ºå›ºå®šå€¼
+    // s, u Îª¹Ì¶¨Öµ
     var s = i_i_a("11400714785074694791");
     var u = i_i_a("14029467366897019727");
 //    let tool = new Tool();
